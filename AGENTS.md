@@ -32,3 +32,14 @@ Provide an automated workflow for generating content. The agent can brainstorm i
 - If the repository contains a `tests/` directory, run `pytest` after changes.
 - Otherwise run `echo 'No tests'`.
 
+## Example Commands
+Use the following commands to perform common tasks:
+
+| Task | Command |
+|------|---------|
+| Create project | `python scripts/generate_content.py <slug>` |
+| Gather references | `curl <url> >> projects/<slug>/references.md` |
+| Draft manuscript | `echo "# Draft" >> projects/<slug>/manuscript.md` |
+| Upload video | `python scripts/upload_to_youtube.py <file> --title "Title"` |
+| Generate project | `python scripts/generate_project.py "<topic>"` |
+
