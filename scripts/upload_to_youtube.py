@@ -5,6 +5,8 @@ import os
 from pathlib import Path
 from typing import List
 
+from fetch_youtube_refresh_token import fetch_refresh_token
+
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
@@ -15,15 +17,22 @@ TOKEN_URI = "https://oauth2.googleapis.com/token"
 
 
 def get_authenticated_service() -> any:
-    """Create an authenticated YouTube service using environment variables."""
+    """Create an authenticated YouTube service using environment variables.
+
+    If no refresh token exists, run the OAuth flow to obtain one.
+    """
     client_id = os.environ.get("YOUTUBE_CLIENT_ID")
     client_secret = os.environ.get("YOUTUBE_CLIENT_SECRET")
     refresh_token = os.environ.get("YOUTUBE_REFRESH_TOKEN")
 
-    if not all([client_id, client_secret, refresh_token]):
+    if not all([client_id, client_secret]):
         raise EnvironmentError(
-            "Missing YouTube OAuth credentials in environment variables"
+            "Missing YouTube OAuth client credentials in environment variables",
         )
+
+    if not refresh_token:
+        print("No refresh token found. Starting OAuth flow...")
+        refresh_token = fetch_refresh_token(client_id, client_secret)
 
     creds = Credentials(
         token=None,
