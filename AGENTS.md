@@ -1,5 +1,3 @@
-# agents.md
-
 ## Overview
 
 This document defines the Codex-accessible agents used in the `content-creator` project. Each agent handles a specific phase of the pipeline and is invoked using a natural-language command such as `!generate today` or `!produce today`. Outputs are saved in structured JSON formats under the `projects/<date>/` directory.
