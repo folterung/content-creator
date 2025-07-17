@@ -1,0 +1,40 @@
+# Trending Topics
+
+- Trump’s victory over PBS and NPR ‘bias’ will be ‘devastating’ for rural areas, station leaders say - CNN
+- Trump blasts 'stupid' and 'foolish' Republicans amid calls to reveal more Epstein files - ABC News - Breaking News, Latest News and Videos
+- Senate panel to vote on federal judge nomination for Emil Bove, who defended Trump - NPR
+- Tens of thousands in US set to join ‘Good Trouble’ protests honoring John Lewis - The Guardian
+- US justice department fires Jeffrey Epstein prosecutor Maurene Comey - Financial Times
+- US strikes destroyed only one of three Iranian nuclear sites, NBC News reports - Reuters
+- Former pro baseball player Chase Childers dies trying to save swimmers off South Carolina - CBS News
+- National Guard came to L.A. to fight unrest. Troops ended up fighting boredom - Los Angeles Times
+- Russia tightens its stranglehold on Ukraine battlefield as Trump gifts Putin 50-day window - CNN
+- Gulf Tropical Disturbance A Flood Threat In Louisiana, Mississippi, Including New Orleans - The Weather Channel
+- Syria leader vows to protect Druze after sectarian violence prompts Israeli strikes - BBC
+- The U.K. Plans to Lower the Voting Age to 16. Here’s What to Know. - The New York Times
+- Exclusive | New Details in Air India Crash Probe Shift Focus to Senior Pilot - The Wall Street Journal
+- At least 61 dead, 45 rescued in huge fire at hypermarket in Iraq’s Kut - Al Jazeera
+- Meta investors, Zuckerberg reach settlement to end $8 billion trial over Facebook privacy litigation - Reuters
+- Uber makes multi-million-dollar investment in Lucid and Nuro to build a premium robotaxi service - TechCrunch
+- Morning Bid: Markets stoic over Powell's shifting fate - Reuters
+- PepsiCo earnings beat estimates even as U.S. demand falls - CNBC
+- Apple News+ adds a new game that uses emoji and Genmoji to sovle puzzles - TechCrunch
+- Samsung Galaxy Z Fold 7 review: Foldable phone nirvana (for a price) - Engadget
+- Everything we learned from a week with Apple CarPlay Ultra - Ars Technica
+- Google Search adds Gemini 2.5 Pro, AI Deep Search, and agentic local calling - Search Engine Land
+- Connie Francis, ‘Pretty Little Baby’ and ‘Who’s Sorry Now’ Singer, Dies at 87 - The New York Times
+- Why ‘Jaws’ Works - The New York Times
+- Denise Richards alleges estranged husband Aaron Phypers threatened to kill her, gets restraining order - Page Six
+- Lady Gaga’s Complete ‘Mayhem Ball’ Tour Setlist: Every Song Played on Opening Night in Las Vegas - Variety
+- The Open 2025 leaderboard live updates: Golf scores, Open Championship coverage, Round 1 at Royal Portrush - CBS Sports
+- Uno-X rider 'terrified' after receiving threats over Tadej Pogačar Tour de France crash - Cycling Weekly
+- Veteran LB Von Miller, Washington Commanders finalizing 1-year deal: Source - The Athletic - The New York Times
+- Former Texans, Eagles LB Braman dies at 38 - ESPN
+- A massive rock from Mars landed on Earth. It sold for a record $5.3M. - The Washington Post
+- Astronomers witness the birth of a planetary system for the 1st time (video) - Space
+- One of 2025’s best meteor showers is about to begin: It can be seen across the US - AL.com
+- New Clue to How Matter Outlasted Antimatter at the Big Bang Is Found - The New York Times
+- Three-person IVF technique spared children from inherited diseases, scientists say - Reuters
+- Flesh-eating bacteria has killed 4 in Florida. Here’s what to know. - The Washington Post
+- Day care measles exposure forces Iowa family to take weeks off work for baby: 'It only takes one' - NBC News
+- No Link Found Between Aluminum in Vaccines and Autism, ADHD - Neuroscience News
