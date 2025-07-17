@@ -15,6 +15,8 @@ All generated files are saved in: `projects/<date>/`
 | `!generate DATE` | ① `news-collector` → ② `timeline-generator`                | `news.json`, `video_timeline.json`     |
 | `!produce DATE`  | ③ `video-producer`                                         | `video_metadata.json`, YouTube upload  |
 
+> ⚠️ **IMPORTANT:** Final video files produced during `!produce` (e.g., `.mp4`, `.webm`, etc.) must be **excluded from Git commits**. These are intended for YouTube upload only and are not tracked artifacts in version control.
+
 ---
 
 ## ✅ Agent Details
