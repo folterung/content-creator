@@ -1,0 +1,6 @@
+name: video-producer
+description: Generates and uploads a YouTube video from a timeline JSON.
+entrypoint: python3 scripts/video_producer.py $DATE
+language: python
+secrets:
+  - YOUTUBE_CLIENT_SECRET
