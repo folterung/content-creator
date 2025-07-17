@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate a content project based on trending search topics."""
+"""Generate a content project based on trending news topics."""
 
 from __future__ import annotations
 
@@ -13,10 +13,8 @@ from generate_content import create_project
 
 
 def fetch_trending_topics() -> list[str]:
-    """Return a list of trending search topics in the US."""
-    url = (
-        "https://trends.google.com/trends/trendingsearches/daily/rss?geo=US"
-    )
+    """Return a list of trending news topics in the US."""
+    url = "https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en"
     try:
         with urllib.request.urlopen(url, timeout=10) as resp:
             data = resp.read()
@@ -25,7 +23,7 @@ def fetch_trending_topics() -> list[str]:
         return []
 
     root = ET.fromstring(data)
-    return [item.findtext("title") for item in root.findall(".//item")]
+    return [item.findtext("title") for item in root.findall("./channel/item")]
 
 
 def main() -> None:
