@@ -1,7 +1,11 @@
 """Upload a video to YouTube using the YouTube Data API v3."""
 
-import argparse
 import os
+import certifi
+
+os.environ["SSL_CERT_FILE"] = certifi.where()
+
+import argparse
 from pathlib import Path
 from typing import List
 
