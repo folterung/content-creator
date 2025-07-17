@@ -2,6 +2,10 @@
 """Produce a video from a timeline and upload it to YouTube."""
 from __future__ import annotations
 
+import os
+import certifi
+os.environ["SSL_CERT_FILE"] = certifi.where()
+
 import argparse
 import json
 import subprocess
