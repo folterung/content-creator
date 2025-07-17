@@ -1,45 +1,119 @@
-# Codex Agent Instructions
+# agents.md
 
-These instructions apply to the entire repository.
+## Overview
 
-## Purpose
-Provide an automated workflow for generating content. The agent can brainstorm ideas, gather reference articles, draft manuscripts, and optionally create accompanying videos.
+This document defines the Codex-accessible agents used in the `content-creator` project. Each agent handles a specific phase of the pipeline and is invoked using a natural-language command such as `!generate today` or `!produce today`. Outputs are saved in structured JSON formats under the `projects/<date>/` directory.
 
-## Repository Structure
-- `projects/` - one subfolder per content project. The agent creates a new timestamped or slugged folder when starting a project.
-- `scripts/` - automation scripts. The agent can create or update tools here.
+Codex should treat each command as an orchestrated task, following these responsibilities and file contracts.
 
-## Workflow Guidance
-1. **Idea Generation**
-   - When given a high-level topic, create a list of content ideas.
-   - Store generated ideas in `projects/<slug>/ideas.md`.
+---
 
-2. **Research**
-   - For the chosen idea, gather references from reputable sources. Save notes in `projects/<slug>/references.md`.
+## Agent: `news-collector`
 
-3. **Manuscript**
-   - Draft a manuscript in `projects/<slug>/manuscript.md`. Include sections such as introduction, main discussion, and conclusion.
+**Trigger:** `!generate <date>`
 
-4. **Video Creation**
-   - If video output is requested, create a script in `projects/<slug>/video_script.md`.
-   - The agent may integrate with video generation tools such as Sora if available.
+**Role:** Collect relevant, high-quality news data from trusted sources.
 
-5. **Committing Work**
-   - After completing a step, commit new files or changes.
-   - If network access blocks a request, note it in the PR description under "Network access".
+### Responsibilities:
 
-## Testing
-- If the repository contains a `tests/` directory, run `pytest` after changes.
-- Otherwise run `echo 'No tests'`.
+* Determine the target date (default to today if not supplied).
+* Query verified, reputable news feeds (e.g., Reuters, AP, NYT).
+* Filter out low-credibility or clickbait content.
+* Extract top stories with summaries, links, timestamps.
+* Output data to: `projects/<date>/news.json`
 
-## Example Commands
-Use the following commands to perform common tasks:
+### Output Example:
 
-| Task | Command |
-|------|---------|
-| Create project | `python scripts/generate_content.py <slug>` |
-| Gather references | `curl <url> >> projects/<slug>/references.md` |
-| Draft manuscript | `echo "# Draft" >> projects/<slug>/manuscript.md` |
-| Upload video | `python scripts/upload_to_youtube.py <file> --title "Title"` |
-| Generate project | `python scripts/generate_project.py "<topic>"` |
+```json
+{
+  "date": "2025-07-17",
+  "headlines": [
+    {
+      "title": "Global Markets Surge on Tech Earnings",
+      "summary": "Tech stocks drive global indices higher after strong quarterly results.",
+      "source": "Reuters",
+      "url": "https://reuters.com/...",
+      "timestamp": "2025-07-17T09:00:00Z"
+    }
+  ]
+}
+```
 
+---
+
+## Agent: `timeline-generator`
+
+**Trigger:** Automatically invoked after `news-collector` completes.
+
+**Role:** Create a video storyboard (timeline) from the collected news data.
+
+### Responsibilities:
+
+* Read `projects/<date>/news.json`.
+* Create one timeline segment per headline.
+* Include: start/end times, voiceover narration, visual cue suggestions.
+* Output to: `projects/<date>/video_timeline.json`
+
+### Output Example:
+
+```json
+{
+  "segments": [
+    {
+      "start": "00:00",
+      "end": "00:30",
+      "headline": "Markets Surge on Tech News",
+      "description": "Charts and footage of Wall Street, tech companies, and stock tickers.",
+      "visual_cues": ["stock charts", "b-roll office scenes"],
+      "voiceover": "Markets surged today as major tech companies posted better-than-expected earnings..."
+    }
+  ]
+}
+```
+
+---
+
+## Agent: `video-producer`
+
+**Trigger:** `!produce <date>`
+
+**Role:** Generate a complete video and upload it to YouTube.
+
+### Responsibilities:
+
+* Read `projects/<date>/video_timeline.json`.
+* Retrieve or synthesize:
+
+  * Visual assets (stock footage, images)
+  * Voiceover narration (TTS or pre-recorded)
+  * Background music or ambient sound
+* Render the full video.
+* Upload the video to YouTube using pre-authorized API credentials.
+* Store metadata in `projects/<date>/video_metadata.json`.
+
+### Output Example:
+
+```json
+{
+  "youtube_video_id": "AbCdEfGhIjK",
+  "url": "https://youtube.com/watch?v=AbCdEfGhIjK",
+  "duration": "3:45",
+  "segments": 5,
+  "upload_timestamp": "2025-07-17T11:00:00Z"
+}
+```
+
+---
+
+## Summary
+
+| Command          | Agents Involved                        | Output Files                          |
+| ---------------- | -------------------------------------- | ------------------------------------- |
+| `!generate DATE` | `news-collector`, `timeline-generator` | `news.json`, `video_timeline.json`    |
+| `!produce DATE`  | `video-producer`                       | YouTube upload, `video_metadata.json` |
+
+---
+
+Ensure Codex chains agent operations sequentially and verifies file existence before moving to the next phase. Fail gracefully if expected inputs are missing.
+
+For future extension: consider agents like `comment-responder` (automated replies), `trend-analyzer`, or `performance-reporter`.
