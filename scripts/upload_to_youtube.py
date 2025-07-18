@@ -14,7 +14,11 @@ from fetch_youtube_refresh_token import fetch_refresh_token
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
-from httplib2 import Http
+import httplib2
+try:
+    from google.auth.transport.httplib2 import AuthorizedHttp  # type: ignore
+except ImportError:  # For older google-auth versions
+    from google_auth_httplib2 import AuthorizedHttp  # type: ignore
 
 # Scope required for uploading videos
 YOUTUBE_UPLOAD_SCOPE = "https://www.googleapis.com/auth/youtube.upload"
@@ -49,9 +53,10 @@ def get_authenticated_service() -> any:
     )
 
     disable_verify = os.environ.get("DISABLE_SSL_VERIFY", "false").lower() == "true"
-    http_client = Http(disable_ssl_certificate_validation=True) if disable_verify else None
+    http = httplib2.Http(disable_ssl_certificate_validation=True) if disable_verify else httplib2.Http()
+    authorized_http = AuthorizedHttp(creds, http)
 
-    return build("youtube", "v3", credentials=creds, http=http_client)
+    return build("youtube", "v3", http=authorized_http)
 
 
 def upload_video(
